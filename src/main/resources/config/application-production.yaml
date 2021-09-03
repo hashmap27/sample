@@ -1,0 +1,10 @@
+###############################
+#### PRODUCTION PROPERTIES ####
+###############################
+server:
+  port: 8080
+
+# Logging Level
+logging:
+  level:
+    com.hashmap27: info

@@ -1,0 +1,41 @@
+# Default Properties
+server:
+  port: 8080
+  error:
+    whitelabel:
+      enabled: false # Default Error Page 사용 유무
+  tomcat:
+    remoteip:
+      remote-ip-header: x-forwarede-for # 원본 IP
+      protocol-header: x-forwared-proto # 원본 프로토콜 스키마
+      port-header: x-fowarded-prot  # 원본 PORT
+
+# Project Information
+info:
+  group: "@project.groupId@"
+  artifact: "@project.artifactId@"
+  name: "@project.name@"
+  description: "@project.description@"
+  version: "@project.version@"
+  java-version: "@java.version@"
+  application-name: ${spring.applicationm.name}
+
+
+# Spring Default Setting
+spring:
+  main:
+    allow-bean-definition-overriding: true  # 빈 생성 시 중복 에러 발생을 제거. (Default: false)
+  jackson:
+    date-format: "yyyy-MM-dd HH:mm:ss"    # 날자 포맷 문자열 이나 완전한 날짜 포맷 클래스 이름
+    time-zone: "Asia/Seoul"   # 날짜 포맷팅 시 사용할 시간대. Asia/Seoul 또는 GMT+10 과 같이 인식 가능한 시간대 식별자로 지정.
+    serialization:  # jackson 자바 객체 직렬화 기능의 옵션 (비)활성
+      write-dates-as-timestamps: false
+      write-dates-with-zone-id: false
+    deserialization:  # jackson 자바 객체 역직렬화 기능의 옵션 (비)활성
+      fail-on-unknown-properties: false
+    mapper:   # 일반적인 jackson 기능의 옵션 (비)활성
+      sort-properties-alphabetically: false
+  mvc:
+    throw-exception-if-no-handler-found: true
+  application:
+    name: sample
