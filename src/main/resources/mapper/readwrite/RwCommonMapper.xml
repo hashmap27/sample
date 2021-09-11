@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hashmap27.sample.repository.readwrite.RwCommonMapper">
+
+    <sql id="commonPageHeader" >
+        SELECT 
+            *
+        FROM (
+            SELECT 
+                (ROW_NUMBER() OVER()) AS ROWNUM
+                , A.*
+            FROM (
+    </sql>
+    
+    <sql id="commonPageFooter" >
+          ) A
+        ) B
+        WHERE B.ROWNUM BETWEEN #{startRow, jdbcType=INTEGER} AND #{endRow, jdbcType=INTEGER}
+    </sql>
+    
+    <sql id="commonCountHeader" >
+        SELECT 
+            count(1) AS totalRows
+        FROM (
+    </sql>
+    
+    <sql id="commonCountFooter" >
+        ) R1
+    </sql>
+
+    <select id="rwTest" resultType="java.lang.Integer">
+        SELECT 1;
+    </select>
+
+
+</mapper>
